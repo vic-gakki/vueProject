@@ -12,7 +12,7 @@ module.exports = {
 			{test:/\.js$/, use:'babel-loader', exclude:/node_modules/},
 			{test:/\.css$/, use:['style-loader','css-loader']},
 			{test:/\.less$/, use:['style-loader','css-loader','less-loader']},
-			{test:/\.(jpe?g|gif|png)$/, use:'url-loader?limit=19875&name=[hash:8]-[name].[ext]'},
+			{test:/\.(jpe?g|gif|png)$/, use:'url-loader?limit=25000&name=[hash:8]-[name].[ext]'},
 			{test:/\.(woff|woff2|eot|svg|ttf)$/, use:'url-loader'},
 			{test:/\.vue$/, use:'vue-loader'}
 		]
