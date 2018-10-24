@@ -22,6 +22,7 @@
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
+		
 	</div>
 </template>
 <script>
@@ -30,6 +31,7 @@
 <style lang="less" scoped>
 	.app-container {
 		padding-top: 40px;
+		padding-bottom: 50px;
 	}
 	.v-enter {
 		opacity: 0;

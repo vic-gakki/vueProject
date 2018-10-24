@@ -2,10 +2,12 @@
 import VueRouter from 'vue-router'
 
 //导入需要配置路由的组件
-import home from '../maincomponents/Home.vue'
-import member from '../maincomponents/Member.vue'
-import cart from '../maincomponents/Cart.vue'
-import search from '../maincomponents/Search.vue'
+import home from '../components/tabbar/Home.vue'
+import member from '../components/tabbar/Member.vue'
+import cart from '../components/tabbar/Cart.vue'
+import search from '../components/tabbar/Search.vue'
+import news from '../components/news/News.vue'
+import newsInfo from '../components/news/newsInfo.vue'
 
 const router = new VueRouter({
 	//配置路由规则
@@ -14,7 +16,9 @@ const router = new VueRouter({
 		{path: '/home', component: home},
 		{path: '/member', component: member},
 		{path: '/cart', component: cart},
-		{path: '/search', component: search}
+		{path: '/search', component: search},
+		{path: '/home/news', component: news},
+		{path: '/home/newsInfo/:id', component: newsInfo}
 	],
 	//配置路由高亮对应的类
 	linkActiveClass: 'mui-active'
