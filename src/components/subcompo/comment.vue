@@ -2,8 +2,8 @@
 	<div class="comment-box">
 		<h1>发表评论</h1>
 		<hr>
-		<textarea placeholder="说点什么吧..."></textarea>
-		<mt-button type="primary" size="large">确认发布</mt-button>
+		<textarea placeholder="说点什么吧！不超过120字" maxlength="120" v-model="post"></textarea>
+		<mt-button type="primary" size="large" @click="postComment">确认发布</mt-button>
 		<ul>
 			<li v-for="(item,index) of commentList">
 				<div class="head">
@@ -24,7 +24,8 @@
 		data(){
 			return {
 				pageIndex: 1,
-				commentList:[]
+				commentList:[],
+				post:''
 			}
 		},
 		methods: {
@@ -38,6 +39,10 @@
 			getMore(){
 				this.pageIndex++
 				this.getCommentById()
+			},
+			postComment(){
+				if(this.post.trim() == '') return
+					this.commentList.unshift({user:'valias',cmt_time:Date.now(),content:this.post})
 			}
 		},
 		created(){
@@ -53,6 +58,7 @@
 		}
 		textarea {
 			margin: 0;
+			height: 80px;
 		}
 		ul {
 			list-style: none;
