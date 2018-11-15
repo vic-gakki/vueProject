@@ -2,38 +2,40 @@
 	<div class="cart-container">
 		<!-- 如果购物车中没有商品则显示 -->
 		<h2 v-if="cartList.length==0">购物车空空如也，快去逛逛吧~</h2>
-		<!-- 购物车商品区域 -->
-		<div class="mui-card" v-for="item of cartList" :key="item.id">
-				<div class="mui-card-content">
-					<div class="mui-card-content-inner">
-						<!-- <mt-switch v-model="$store.getters.getSelectedState[item.id]" @change="selectedChange"></mt-switch> -->
-						<div :class="['mui-switch','mui-switch-mini',item.isSelected?' mui-active':'']" @toggle="selectedChange" :data-id="item.id">
-  						<div class="mui-switch-handle"></div>
-						</div>
-						<img :src="item.imgurl">
-						<div class="info">
-							<h1>{{item.title}}</h1>
-							<p>
-								<span class="price">&yen;{{item.price}}</span>
-								<numbox :count="item.count" :id="item.id"></numbox>
-								<a href="javascript:;" @click="delItem(item.id)">删除</a>
-							</p>
+		<div v-else>
+			<!-- 购物车商品区域 -->
+			<div class="mui-card" v-for="item of cartList" :key="item.id">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<!-- <mt-switch v-model="$store.getters.getSelectedState[item.id]" @change="selectedChange"></mt-switch> -->
+							<div :class="['mui-switch','mui-switch-mini',item.isSelected?' mui-active':'']" @toggle="selectedChange" :data-id="item.id">
+	  						<div class="mui-switch-handle"></div>
+							</div>
+							<img :src="item.imgurl">
+							<div class="info">
+								<h1>{{item.title}}</h1>
+								<p>
+									<span class="price">&yen;{{item.price}}</span>
+									<numbox :count="item.count" :id="item.id"></numbox>
+									<a href="javascript:;" @click="delItem(item.id)">删除</a>
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-		</div>
-		<!-- 商品结算区域 -->
-		<div class="mui-card">
-				<div class="mui-card-content">
-					<div class="mui-card-content-inner sum">
-						<div class="total_price">
-							<p>总计（不含运费）</p>
-							<p>你已勾选<span>{{$store.getters.getTotalNumAndPrice['selectCount']}}</span>件，总价：&yen;<span>{{$store.getters.getTotalNumAndPrice['selectPrice']}}</span></p>
-						</div>
-						<mt-button type='danger'>去结算</mt-button>
-					</div>
-				</div>
 			</div>
+			<!-- 商品结算区域 -->
+			<div class="mui-card">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner sum">
+							<div class="total_price">
+								<p>总计（不含运费）</p>
+								<p>你已勾选<span>{{$store.getters.getTotalNumAndPrice['selectCount']}}</span>件，总价：&yen;<span>{{$store.getters.getTotalNumAndPrice['selectPrice']}}</span></p>
+							</div>
+							<mt-button type='danger'>去结算</mt-button>
+						</div>
+					</div>
+			</div>
+		</div>
 	</div>
 </template>
 <script>
